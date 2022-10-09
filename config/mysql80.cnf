@@ -36,7 +36,34 @@ tmpdir=/data/mytmp/
 sysdate-is-now
 
 #--- InnoDB
+# Buffer pool
+# AWS EC2 t4g.2xlarge 8 vCPU, Memory 32 GiB
+innodb_buffer_pool_size=16G
+innodb_buffer_pool_instances=8
+
 innodb_sort_buffer_size=64M
 
 innodb_data_home_dir=/data/mysql/
+innodb_data_file_path=ibdata1:12M:autoextend
 
+innodb_log_group_home_dir=/log/mysql/innodb-log
+innodb_log_files_in_group=3
+innodb_log_file_size=2048M
+innodb_file_per_table=ON
+
+innodb_undo_directory=/log/mysql/innodb-undo/
+innodb_rollback_segments=128
+innodb_undo_tablespaces=2
+innodb_max_undo_log_size=536870912
+innodb_undo_log_truncate=ON
+
+innodb_status_output_locks=ON
+innodb_print_all_deadlocks=ON
+innodb_adaptive_hash_index=ON
+innodb_doublewrite=OFF
+innodb_flush_log_at_trx_commit=1
+innodb_flush_method=O_DIRECT_NO_FSYNC
+innodb_io_capacity=1000
+innodb_io_capacity_max=5000
+innodb_ft_enable_stopword=OFF
+innodb_cmp_per_index_enabled=ON
