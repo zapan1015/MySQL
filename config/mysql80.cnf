@@ -1,3 +1,6 @@
+[client]
+socket=/tmp/mysql.sock
+
 [mysqld]
 server-id=3001
 
@@ -34,6 +37,17 @@ tmp_table_size=10M
 tmpdir=/data/mytmp/
 
 sysdate-is-now
+
+#--- Error
+log_error=/log/mysql/mysql-err.log
+log_error_verbosity=1
+
+#--- Slow Query Log
+slow_query_log=ON
+long_query_time=1
+log_slow_extra=ON
+log_slow_admin_statements=ON
+slow_query_log_file=/log/mysql/mysql-slow.log
 
 #--- InnoDB
 # Buffer pool
